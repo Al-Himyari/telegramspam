@@ -4,7 +4,7 @@ import sM
 
 
 intro = """
-       ★
+       
      S___S
     S     S
    S       S
