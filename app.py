@@ -44,7 +44,7 @@ if is_ok == True:
    sM.is_num(count)
   except ValueError:
    w_n = True
-   count = input("not accepted, try again: ")
+   count = input("Please enter a number and try again: ")
   else:
    pass
    w_n = False
