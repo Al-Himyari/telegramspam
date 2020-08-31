@@ -13,7 +13,7 @@ intro = """
 """
 print(intro)            
 pull_token = input("Please type the bot token: ")
-check_token = requests.get("https://api.sMgram.org/bot" + pull_token + "/getMe") 
+check_token = requests.get("https://api.telegram.org/bot" + pull_token + "/getMe") 
 dictionary_getMe_token = (json.loads(check_token.text))
 is_ok = dictionary_getMe_token["ok"]
 
