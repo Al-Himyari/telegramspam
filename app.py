@@ -54,6 +54,9 @@ if is_ok == True:
   i = 0
  while i < int(count):
   sendMessage(message)
-  i=i + 1 
-  print(i)
+  i=i + 1
+  if str(i) == "1":  
+   print(str(i) + " message")
+  if str(i) > "1":
+   print(str(i) + " messages")
 print("Done")
