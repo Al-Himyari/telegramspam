@@ -1,9 +1,15 @@
 import requests
 import json
-import logs
-import sM
 
 
+def sendMessage(message1):
+ requests.get("https://api.telegram.org/bot" + Token + "/sendMessage?chat_id=" + chat_id + "&text=" + message1)
+
+def is_num(num):
+ isinstance(int(num), int)
+ 
+Token = ""
+chat_id = ""
 intro = """
        
      S___S
@@ -19,7 +25,6 @@ dictionary_getMe_token = (json.loads(check_token.text))
 is_ok = dictionary_getMe_token["ok"]
 count = ""
 
-
 while is_ok == False:
  pull_token = input("Wrong token, try again: ")
  check_token = requests.get("https://api.telegram.org/bot" + pull_token + "/getMe")
@@ -29,30 +34,26 @@ if is_ok == True:
  name = dictionary_getMe_token["result"]["first_name"]
  username = dictionary_getMe_token["result"]["username"]
  ID = dictionary_getMe_token["result"]["id"]
- add_token = open("logs.py","w+")
- add_token.write("Token = " + "\"" + pull_token + "\"")
- print("Your key was added. \n  First name: " + name + "\n  Username: " + username + "\n  ID: " + str(ID) )
- add_token.close
+ Token = pull_token
  r_chat_id = input("Please enter the chat ID: ")
- add_chat_id = open("logs.py","a")
- add_chat_id.write("\nchat_id = " + "\"" + r_chat_id + "\"")
- add_chat_id.close
+ chat_id = r_chat_id
+ pass
  message = input("whats the message?: ")
  count = input("how many messages?: ")
  w_n = ""
  while w_n == "" or w_n == True:
   try:
-   sM.is_num(count)
+   is_num(count)
   except ValueError:
    w_n = True
-   count = input("Please enter a number and try again: ")
+   count = input("not accepted, try again: ")
   else:
    pass
    w_n = False
  if w_n == False:
   i = 0
  while i < int(count):
-  sM.sendMessage(message)
+  sendMessage(message)
   i=i + 1 
   print(i)
 print("Done")
